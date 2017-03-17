@@ -1,46 +1,23 @@
 # -*- coding: utf-8 -*-
 
 
-from flask import Flask
+from flask import Flask, render_template
+from htmlmin.minify import html_minify
 
 
 app = Flask(__name__)
 
 
-# 首页路由
 @app.route("/")
-def index():
-    return "这是首页啊，魂淡"
+def home():
+    return render_template("index.html", name="denis")
 
 
-# 路由为hello的页面
-@app.route("/hello")
-def hello():
-    return "Hello, world"
-
-
-# 变量
-@app.route("/hello/<name>")
-def hello_to_someone(name):
-    return "hello {}".format(name)
-
-
-# 变量类型控制
-@app.route("/var_limit/<int:pid>")
-def get_pid(pid):
-    return "Pid : {:d}".format(pid)
-
-
-# slash的影响
-@app.route("/projects/")
-def projects():
-    return "The project page"
-
-
-# /about/就会有not found的错误
-@app.route("/about")
-def about():
-    return "The about page"
+@app.route("/template_inheritance")
+def inherit():
+    render_html = render_template("child.html",
+                                  title="atom", child_name="Curry")
+    return html_minify(render_html)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+
+    <b>if 断言</b> <br />
+
+    {% if name is defined %}
+    hello {{ name }}
+    {% else %}
+    hello world
+    {% endif %}
+
+    <b>展示jinja2模板符号</b>
+  <p># inline one</p>
+  <p>{{ '{{' }}, {{ '}}' }}</p>
+  <div>
+
+  # bigger section
+  {% raw %}
+  <ul>
+    {% for item in seq %}
+    <li>{{ item }}</li>
+    {% endfor %}
+  </ul
+  {% endraw %}
+
+  </div>
+
+
+
+    <h5>end of the body</h5>
+  </body>
+</html>
